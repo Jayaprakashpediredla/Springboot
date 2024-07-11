@@ -66,7 +66,7 @@ When starting a new Spring Boot application, Spring Initializr is the recommende
 
 the following commands to use the gradle wrapper to build and test the generated application.
 
-[~] $ cd cashcard
+[~] $ cd cashcard 
 [~/cashcard] $ ./gradlew build
 **************************************
 
@@ -112,6 +112,78 @@ Not sure how to actually implement TDD? Don’t worry, you’ll get a lot of pra
 
 The Testing Pyramid
 Different tests can be written at different levels of the system. At each level, there is a balance between the speed of execution, the “cost” to maintain the test, and the confidence it brings to system correctness. This hierarchy is often represented as a “testing pyramid”.
+
+
+
+
+***1: Writing a Failing Test***
+Here we’ll cover a brief introduction to the JUnit test library and the Gradle build tool. We’ll also use the Test-First approach to building software.
+
+Test classes in a standard Java project are in the src/test directory, not src/main. In our case we've decided to put our code in the example.cashcard package, so our test files should be in the src/test/java/example/cashcard directory.
+
+Create the test class CashCardJsonTest.
+
+The first thing we need to do is create our new test class in the src/test/java/example/
+
+
+
+Open the JAVA PROJECTS section at the bottom left of the page.
+Open the src/test/java directory.
+Within src/test/java, select the example.cashcard package and click on the + sign to the right.
+A dialog will appear asking for the new class name. Enter CashCardJsonTest.java.
+
+
+
+![image](https://github.com/Jayaprakashpediredla/Springboot/assets/45528469/2ae48519-51d7-4070-8729-2cd50a68871d)
+
+
+
+In terminal,
+[~/exercises] $ ./gradlew test
+
+Expected O/P:
+> Task :test
+
+CashCardApplicationTests > contextLoads() PASSED
+
+CashCardJsonTest > myFirstTest() FAILED
+    org.opentest4j.AssertionFailedError:
+    expected: 42
+     but was: 1
+...
+        at app//example.cashcard.CashCardJsonTest.myFirstTest(CashCardJsonTest.java:11)
+
+2 tests completed, 1 failed
+
+
+
+In order to "fix" the test, you can assert a statement that you know is true:
+
+assertThat(42).isEqualTo(42);
+Now run the test again. It passes!
+
+[~/exercises] $ ./gradlew test
+
+> Task :test
+
+CashCardJsonTest > myFirstTest() PASSED
+
+CashCardApplicationTests > contextLoads() PASSED
+
+BUILD SUCCESSFUL in 4s
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
